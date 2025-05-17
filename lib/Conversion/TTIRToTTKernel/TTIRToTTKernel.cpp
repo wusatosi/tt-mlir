@@ -450,7 +450,7 @@ public:
     auto systemDesc = getCurrentScopeSystemDesc(op);
     auto chipIds = device.getChipIds();
     assert(chipIds.size() == 1);
-    auto chipDescs = systemDesc.getChipDesc(chipIds[0]);
+    auto chipDesc = systemDesc.getChipDesc(chipIds[0]);
 
     // TODO(jdesousa): Temporary L1 assertion until DRAM is supported
     assert(isL1MemorySpace(mlir::cast<MemorySpaceAttr>(
@@ -580,7 +580,7 @@ public:
     auto systemDesc = getCurrentScopeSystemDesc(op);
     auto chipIds = device.getChipIds();
     assert(chipIds.size() == 1);
-    auto chipDescs = systemDesc.getChipDesc(chipIds[0]);
+    auto chipDesc = systemDesc.getChipDesc(chipIds[0]);
 
     assert(op.getDim() == 0 ||
            op.getDim() == 1 &&
@@ -796,7 +796,7 @@ public:
     auto systemDesc = getCurrentScopeSystemDesc(op);
     auto chipIds = device.getChipIds();
     assert(chipIds.size() == 1);
-    auto chipDescs = systemDesc.getChipDesc(chipIds[0]);
+    auto chipDesc = systemDesc.getChipDesc(chipIds[0]);
 
     Value value = op.getValue();
     Value semaphoreAddr = adaptor.getSemaphore();
