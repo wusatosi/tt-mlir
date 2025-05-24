@@ -1791,10 +1791,8 @@ mlir::OpFoldResult mlir::tt::ttir::TypecastOp::fold(FoldAdaptor adaptor) {
   return {};
 }
 
-namespace {
-
-bool isNarrowingConversion(const ::mlir::tt::DataType srcDtype,
-                           const ::mlir::tt::DataType dstDtype) {
+static bool isNarrowingConversion(const ::mlir::tt::DataType srcDtype,
+                                  const ::mlir::tt::DataType dstDtype) {
   const bool srcIsFloat = isFloat(srcDtype);
   const bool dstIsFloat = isFloat(dstDtype);
   const auto srcNumberOfBits = getNumberOfBits(srcDtype);
@@ -1831,8 +1829,6 @@ bool isNarrowingConversion(const ::mlir::tt::DataType srcDtype,
   assert(srcIsSigned && !dstIsSigned);
   return true;
 }
-
-} // namespace
 
 // TypecastOp canonicalization method
 ::llvm::LogicalResult
